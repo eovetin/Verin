@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0f1f15" />
+    <title>App Criador de Mods IA - Minecraft Bedrock</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero" aria-labelledby="page-title">
+        <p class="eyebrow">App/Site instalável para Bedrock</p>
+        <h1 id="page-title">Criador de Mods IA</h1>
+        <p class="hero__text">
+          Escreva a ideia do addon e baixe um pacote <strong>.mcaddon</strong> com behavior pack,
+          resource pack, scripts, textura simples, arquivos de idioma e um prompt pronto para IA.
+        </p>
+        <div class="hero__actions">
+          <button class="button button--ghost" id="install-app" type="button" hidden>Instalar como aplicativo</button>
+          <a class="button button--link" href="#generator">Criar meu mod</a>
+        </div>
+      </section>
+
+      <section class="app-note" aria-label="Como usar como aplicativo">
+        <h2>Sem APK? Use como app instalável</h2>
+        <p>
+          Este projeto foi feito como site/PWA. Se o navegador permitir, clique em
+          <strong>Instalar como aplicativo</strong>. Se não aparecer, use o menu do navegador e escolha
+          “Adicionar à tela inicial”.
+        </p>
+      </section>
+
+      <form class="generator-card" id="generator">
+        <div class="field-grid">
+          <div class="field">
+            <label for="addon-name">Nome do addon</label>
+            <input id="addon-name" name="addonName" type="text" placeholder="Ex.: Espada do Trovão" required />
+          </div>
+
+          <div class="field">
+            <label for="namespace">Namespace</label>
+            <input id="namespace" name="namespace" type="text" placeholder="Ex.: trovão" pattern="^[a-z0-9_]+$" required />
+            <small>Use letras minúsculas, números e underline.</small>
+          </div>
+        </div>
+
+        <div class="field-grid field-grid--three">
+          <div class="field">
+            <label for="minecraft-version">Número da versão do Minecraft Bedrock</label>
+            <input
+              id="minecraft-version"
+              name="minecraftVersion"
+              type="text"
+              inputmode="decimal"
+              placeholder="Ex.: 1.21.80"
+              pattern="^[0-9]+(\.[0-9]+){1,3}$"
+              aria-describedby="version-help"
+              required
+            />
+            <small id="version-help">A versão alvo entra nos manifests e no guia do pacote.</small>
+          </div>
+
+          <div class="field">
+            <label for="addon-version">Versão do seu mod</label>
+            <input id="addon-version" name="addonVersion" type="text" inputmode="decimal" value="1.0.0" pattern="^[0-9]+(\.[0-9]+){1,2}$" required />
+          </div>
+
+          <div class="field">
+            <label for="package-type">Formato de download</label>
+            <select id="package-type" name="packageType">
+              <option value="mcaddon">.mcaddon</option>
+              <option value="zip">.zip</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field-grid">
+          <div class="field">
+            <label for="mod-type">Tipo principal</label>
+            <select id="mod-type" name="modType">
+              <option value="item">Item/arma</option>
+              <option value="block">Bloco</option>
+              <option value="entity">Mob/entidade</option>
+              <option value="mixed">Addon completo/misto</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="texture-color">Cor da textura base</label>
+            <input id="texture-color" name="textureColor" type="color" value="#36d1ff" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="mod-description">Como você quer o mod?</label>
+          <textarea
+            id="mod-description"
+            name="modDescription"
+            rows="7"
+            placeholder="Ex.: Quero uma espada azul que invoca raio, dá 12 de dano, tem textura própria e receita com diamante."
+            required
+          ></textarea>
+        </div>
+
+        <div class="button-row">
+          <button class="button" type="submit">Gerar e baixar addon</button>
+          <button class="button button--ghost" id="preview-button" type="button">Pré-visualizar arquivos</button>
+        </div>
+      </form>
+
+      <section class="preview" aria-live="polite" aria-labelledby="preview-title">
+        <h2 id="preview-title">Resumo e arquivos gerados</h2>
+        <p id="empty-state">Preencha o formulário para ver o pacote que será baixado.</p>
+        <div id="summary" hidden>
+          <dl class="summary">
+            <div>
+              <dt>Addon</dt>
+              <dd id="summary-name"></dd>
+            </div>
+            <div>
+              <dt>Versão Bedrock</dt>
+              <dd id="summary-version"></dd>
+            </div>
+            <div>
+              <dt>Versão do mod</dt>
+              <dd id="summary-addon-version"></dd>
+            </div>
+            <div>
+              <dt>Pacote</dt>
+              <dd id="summary-package"></dd>
+            </div>
+            <div>
+              <dt>Pedido</dt>
+              <dd id="summary-description"></dd>
+            </div>
+          </dl>
+          <h3>Arquivos dentro do download</h3>
+          <ul class="file-list" id="file-list"></ul>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Criador de Mods IA">
+  <rect width="512" height="512" rx="96" fill="#08110c"/>
+  <rect x="96" y="96" width="320" height="320" rx="40" fill="#182b20" stroke="#58d36f" stroke-width="18"/>
+  <path d="M160 262h192M256 166v192" stroke="#58d36f" stroke-width="34" stroke-linecap="round"/>
+  <path d="M181 171l38 38M331 171l-38 38M181 341l38-38M331 341l-38-38" stroke="#effaf0" stroke-width="24" stroke-linecap="round"/>
+</svg>

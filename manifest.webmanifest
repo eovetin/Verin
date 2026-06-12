@@ -1,0 +1,17 @@
+{
+  "name": "Criador de Mods IA Bedrock",
+  "short_name": "Mods IA",
+  "description": "Site instalável para gerar addons .mcaddon do Minecraft Bedrock.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#08110c",
+  "theme_color": "#0f1f15",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
