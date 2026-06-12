@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gerador de Mods Minecraft Bedrock</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero" aria-labelledby="page-title">
+        <p class="eyebrow">Minecraft Bedrock Addons</p>
+        <h1 id="page-title">Gerador de mods por IA</h1>
+        <p class="hero__text">
+          Descreva o mod que você quer criar e prepare as informações para gerar
+          scripts, texturas, pastas e um pacote <strong>.mcaddon</strong> completo.
+        </p>
+      </section>
+
+      <form class="generator-card" id="mod-form">
+        <div class="field">
+          <label for="addon-name">Nome do addon</label>
+          <input id="addon-name" name="addonName" type="text" placeholder="Ex.: Espada do Trovão" required />
+        </div>
+
+        <div class="field field--split">
+          <div>
+            <label for="minecraft-version">Número da versão do Minecraft Bedrock</label>
+            <input
+              id="minecraft-version"
+              name="minecraftVersion"
+              type="text"
+              inputmode="decimal"
+              placeholder="Ex.: 1.21.80"
+              pattern="^[0-9]+(\.[0-9]+){1,3}$"
+              aria-describedby="version-help"
+              required
+            />
+            <small id="version-help">Informe a versão alvo para a IA gerar arquivos compatíveis.</small>
+          </div>
+
+          <div>
+            <label for="package-type">Formato de download</label>
+            <select id="package-type" name="packageType">
+              <option value="mcaddon">.mcaddon</option>
+              <option value="mcpack">.mcpack</option>
+              <option value="zip">.zip</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="mod-description">Como você quer o mod?</label>
+          <textarea
+            id="mod-description"
+            name="modDescription"
+            rows="7"
+            placeholder="Ex.: Quero uma espada azul que invoca raio, tem textura própria e receita com diamante."
+            required
+          ></textarea>
+        </div>
+
+        <button type="submit">Preparar geração do mod</button>
+      </form>
+
+      <section class="preview" aria-live="polite" aria-labelledby="preview-title">
+        <h2 id="preview-title">Resumo para a IA</h2>
+        <p id="empty-state">Preencha o formulário para ver o resumo do addon.</p>
+        <dl id="summary" class="summary" hidden>
+          <div>
+            <dt>Addon</dt>
+            <dd id="summary-name"></dd>
+          </div>
+          <div>
+            <dt>Versão Bedrock</dt>
+            <dd id="summary-version"></dd>
+          </div>
+          <div>
+            <dt>Pacote</dt>
+            <dd id="summary-package"></dd>
+          </div>
+          <div>
+            <dt>Pedido</dt>
+            <dd id="summary-description"></dd>
+          </div>
+        </dl>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
